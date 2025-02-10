@@ -16,8 +16,6 @@
             break;
         case 'about':
             require '../app/pages/about.php';
-            //require_once '../app/controller/about_controller.php';
-            //about_index();
             break;
         case 'post':
             require '../app/pages/post.php';
@@ -66,12 +64,11 @@
             require '../app/controller/userController.php';
             update_user_password();
             break;
-           
+
         default:
             require_once("../app/controllers/home_controller.php");
-           // home_index();
+            // home_index();
             break;
-
     }
     require '../app/layouts/footer.php';
 

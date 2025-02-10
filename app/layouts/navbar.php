@@ -13,15 +13,15 @@
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
-   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">-->
-    
+
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../app/assets/css/styles.css" rel="stylesheet" />
 </head>
 
 
-<body>  
+<body>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6c757d47;" id="mainNav">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href=".">Start Bootstrap</a>
@@ -32,32 +32,32 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href=".">Home</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="?url=about">About</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about">About</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="?url=posts">Sample Post</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="?url=contact">Contact</a></li>
                 </ul>
-            
-                <?php if(!isset($_SESSION['auth'])):?>
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="?url=SignUp"><span class="fas fa-user"></span> Sign Up</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="?url=login"><span class="fas fa-sign-in-alt"></span> Login</a>
-                            </li>
-                        </ul>
-                    <?php else:?>
-                        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" href="?url=user-profille&id= <?= $_SESSION['auth']['id']?>">
-                                    <span class="fas fa-user"></span> <?php echo $_SESSION['auth']['first_name']. " ".$_SESSION['auth']['last_name']; ?>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="?url=logout">Logout</a>
-                            </li>
-                        </ul>
-                    <?php endif; ?>
+
+                <?php if (!isset($_SESSION['auth'])): ?>
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="?url=SignUp"><span class="fas fa-user"></span> Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="?url=login"><span class="fas fa-sign-in-alt"></span> Login</a>
+                        </li>
+                    </ul>
+                <?php else: ?>
+                    <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="?url=user-profille&id= <?= $_SESSION['auth']['id'] ?>">
+                                <span class="fas fa-user"></span> <?php echo $_SESSION['auth']['first_name'] . " " . $_SESSION['auth']['last_name']; ?>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="?url=logout">Logout</a>
+                        </li>
+                    </ul>
+                <?php endif; ?>
             </div>
         </div>
     </nav>
