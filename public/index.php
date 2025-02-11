@@ -4,6 +4,7 @@
     // require '../app/layouts/navbar.php';
     $url = $_GET["url"] ?? '/';
     include '../app/layouts/navbar.php';
+
     switch ($url) {
         case '/':
             require_once '../app/controller/home_controller.php';
@@ -12,6 +13,11 @@
         case 'home':
             require_once '../app/controller/home_controller.php';
             home_index();
+            break;
+        case 'about':
+            require '../app/pages/about.php';
+            //require_once '../app/controller/about_controller.php';
+            //about_index();
             break;
         case 'post':
             require '../app/pages/post.php';
@@ -29,6 +35,22 @@
         case 'store-post':
             require '../app/controller/postController.php';
             store_post();
+            break;
+        case 'edit_post':
+            require '../app/controller/postController.php';
+            edit_post();
+            break;
+        case 'update_post':
+            require '../app/pages/post_update.php';
+            break;
+        case 'update-post':
+            require '../app/controller/postController.php';
+            updatePost();
+            break;
+        case 'delete_post':
+            require '../app/controller/postController.php';
+            deletePost();
+            break;
         case 'contact':
             require '../app/pages/contact.php';
             break;
@@ -66,11 +88,12 @@
             require '../app/controller/userController.php';
             update_user_password();
             break;
-
+           
         default:
             require_once("../app/controllers/home_controller.php");
-            home_index();
+           // home_index();
             break;
+
     }
     require '../app/layouts/footer.php';
 

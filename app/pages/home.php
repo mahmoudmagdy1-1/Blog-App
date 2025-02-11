@@ -1,4 +1,5 @@
-<?php if (isset($_SESSION['Success'])): ?>
+
+<?php if(isset($_SESSION['Success'])): ?>
     <div class="alert alert-success rounded-0">
         <div class="d-flex justify-content-between align-items-center">
             <div class="col-auto flex-shrink-1 flex-grow-1"><?= $_SESSION['Success'] ?></div>
@@ -9,10 +10,10 @@
             </div>
         </div>
     </div>
-    <?php unset($_SESSION['Success']);    ?>
-<?php endif; ?>
+    <?php  unset($_SESSION['Success']);    ?>
+<?php endif;?>
 
-<header class="masthead" style="background-image: url('../app/assets/img/home-bg.jpg')">
+<header class="masthead" style="background-image: url('../app/storage/home-bg.jpg')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">

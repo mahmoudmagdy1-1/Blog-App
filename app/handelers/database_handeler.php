@@ -117,16 +117,16 @@ function delete_item($table_name , $id){
     $query="DELETE FROM `$table_name` WHERE id= '$id'";
     $result=mysqli_query($con, $query);
     if(mysqli_affected_rows($con)==1){
-        $_SESSION['success']= "data deleted successfully";
+        $_SESSION['Success']= "data deleted successfully";
        // header("location:../index.php");
         //die;
-        return "data deleted successfully";
+        return true;
 
     }else{
         $_SESSION['error']= "deleted error";
         //header("location:../index.php");
         //die;
-        return "deleted error";
+        return false;
 
     }
     
@@ -183,8 +183,11 @@ function update_item($table_name , $data, $id ){
         $data_keys_value.="`$key`".'='."'$value' ,";
 
     }
+    
     $data_keys_value=substr($data_keys_value, 0, -1);//remove last ,
+    
     $query="UPDATE `$table_name` SET $data_keys_value WHERE id=$id";
+    
     $result=mysqli_query($con, $query);
     if(mysqli_affected_rows($con)==1){
         $_SESSION['success']= "data updated successfully";

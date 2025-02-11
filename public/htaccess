@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Set the RewriteBase to the subdirectory
+RewriteBase /Blog-App/public
+
+# Redirect all requests to index.php unless it's an existing file or directory
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]

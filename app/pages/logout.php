@@ -1,7 +1,9 @@
-<?php
+<?php  
 
 session_start();
 session_destroy();
-header('location:login');
+header('location:?url=login');
 
 die;
+
+?>
