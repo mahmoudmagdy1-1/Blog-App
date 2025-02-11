@@ -55,13 +55,12 @@
 
 
                 <th scope="row">Image Profile</th>
-                <td><!--'../app/storage/about-bg.jpg'-->
+                <td>
                     <?php if (!empty($User->user_image)): ?>
                         <img src="<?php echo $User->user_image ?>" alt="user image" style="height:150px;width:150px;">
                     <?php else: ?>
                         <?php echo $User->user_image ?>
                         No Image Uploaded
-                        <!--<img src="../app/assets/img/user-icon.png" alt="user image" style="height:150px;width:150px;">-->
                     <?php endif ?>
                 </td>
                 </tr>

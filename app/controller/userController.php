@@ -238,8 +238,6 @@ function update_user_data()
             $data['age'] = $age;
         }
 
-        // var_dump($_FILES["image"]['tmp_name']);
-
         if (empty($remove_image)) {
             //validation image Exit if file uploaded
             if (isset($_FILES["image"]['tmp_name'])) {
@@ -249,8 +247,6 @@ function update_user_data()
                 // Exit if image file is zero bytes
                 if (filesize($image_file["tmp_name"]) <= 0) {
                     $path = null;
-                    //$data ['user_image']= $_SESSION['auth']['user_image'];
-                    //$errors[]='Uploaded file has no contents.';
                 } else {
                     // Exit if is not a valid image file
                     $image_type = exif_imagetype($image_file["tmp_name"]);
@@ -270,7 +266,6 @@ function update_user_data()
 
                         if (!$result) {
                             $errors[] = 'failed to upload image';
-                            //$data []= ['user_image'=>null];
                         } else {
                             $data['user_image'] = $path;
                         }
@@ -278,7 +273,6 @@ function update_user_data()
                 }
             } else {
                 $path = null;
-                //$data ['user_image']= $_SESSION['auth']['user_image'];          
             }
         } else {
             $data['user_image'] = null;
@@ -372,34 +366,3 @@ function update_user_password()
         die;
     }
 }
-
-
-/*
-function get_user_data(){
-    if($_SERVER['REQUEST_METHOD']=="get"){
-    
-        $id=trim(htmlspecialchars(htmlentities($_GET['id'])));           
-        
-         // validation id => required, num 
-        if(empty($id)){
-            $_SESSION['error']="id is required";
-            header("location:home");
-            die;
-        }elseif(!is_numeric($id)){
-            $_SESSION['error']="Age must be number";
-            header("location:home");
-            die;
-        } 
-            $user=get_User($id);
-            header("location:home");
-            die;
-        
-        
-    }else{
-        $_SESSION['error'] =  "not supported Method";
-        header("location:home");
-        die;
-    }
-
-
-}*/

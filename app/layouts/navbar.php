@@ -32,29 +32,32 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href=".">Home</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about">About</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="?url=posts">Sample Post</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="?url=contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="posts">All Posts</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact">Contact</a></li>
                 </ul>
 
                 <?php if (!isset($_SESSION['auth'])): ?>
                     <ul class="nav navbar-nav ml-auto">
+
                         <li class="nav-item">
-                            <a class="nav-link" href="?url=SignUp"><span class="fas fa-user"></span> Sign Up</a>
+                            <a class="nav-link" href="SignUp"><span class="fas fa-user"></span> Sign Up</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="?url=login"><span class="fas fa-sign-in-alt"></span> Login</a>
+                            <a class="nav-link" href="login"><span class="fas fa-sign-in-alt"></span> Login</a>
                         </li>
                     </ul>
                 <?php else: ?>
                     <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="?url=user-profille&id= <?= $_SESSION['auth']['id'] ?>">
+                            <a class="nav-link" href="add_post"><span class="fas fa-user"></span> Add Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="user-profille&id= <?= $_SESSION['auth']['id'] ?>">
                                 <span class="fas fa-user"></span> <?php echo $_SESSION['auth']['first_name'] . " " . $_SESSION['auth']['last_name']; ?>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="?url=logout">Logout</a>
+                            <a class="nav-link" href="logout">Logout</a>
                         </li>
                     </ul>
                 <?php endif; ?>

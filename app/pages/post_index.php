@@ -17,7 +17,22 @@
     </div>
 </header>
 
+<!-- Handling Messages Form Session -->
 
+<?php if (isset($_SESSION['Success'])): ?>
+    <div class="alert alert-success rounded-0">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="col-auto flex-shrink-1 flex-grow-1"><?= $_SESSION['Success'] ?></div>
+            <div class="col-auto">
+                <a href="#" onclick="$(this).closest('.alert').remove()" class="text-decoration-none text-reset fw-bolder mx-3">
+                    <i class="fa-solid fa-times"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <?php unset($_SESSION['Success']);    ?>
+<?php endif; ?>
+<!--END of Handling Messages Form Session -->
 <!---------------------------Posts------------------------->
 <div class="container">
 
@@ -89,3 +104,4 @@
 
 
     <div>
+        <!--<a class="btn btn-primary" href="#" role="button" style=" position: fixed; bottom: 0px; right: 0px; border-radius: 50%;">Add Post</a> -->
