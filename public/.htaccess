@@ -1,5 +1,6 @@
 RewriteEngine On
-RewriteBase /Blog-App-1/Blog-App/public
+# change the next to your path
+RewriteBase /Blog-App/public
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
