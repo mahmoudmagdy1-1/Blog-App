@@ -66,11 +66,18 @@
             require '../app/controller/userController.php';
             update_user_password();
             break;
-
-        default:
-            require_once("../app/controllers/home_controller.php");
-            home_index();
+        case 'like_post':
+            require '../app/controller/like_controller.php';
+            likeIndex();
             break;
+        case 'store_like':
+            require '../app/controller/postController.php';
+            post_index();
+            break;
+            // default:
+            //     require_once("../app/controllers/home_controller.php");
+            //     home_index();
+            //     break;
     }
     require '../app/layouts/footer.php';
 

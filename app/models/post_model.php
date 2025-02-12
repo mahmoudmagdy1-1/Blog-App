@@ -32,7 +32,15 @@ function list_Posts()
     if (empty($post_comments)) {
         $post_comments = [];
     }
-    $posts = [$post_user, $post_likes, $post_comments];
+
+    $user_id = $_SESSION['auth']['id'];
+    $query = "SELECT id AS like_id, post_id FROM likes WHERE user_id = $user_id";
+    $user_likes = select_array($query);
+    if (empty($user_likes)) {
+        $user_likes = [];
+    }
+
+    $posts = [$post_user, $post_likes, $post_comments, $user_likes];
     return $posts;
 }
 

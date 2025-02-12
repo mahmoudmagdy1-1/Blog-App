@@ -1,9 +1,9 @@
 <?php
 require_once('../app/models/post_model.php');
-
 function post_index()
 {
     $posts = list_Posts();
+    $user_likes = array_column($posts[3], 'post_id');
 
     $post_All = $posts[0];
     for ($i = 0; $i < count($posts[0]); $i++) {
@@ -20,6 +20,7 @@ function post_index()
                 break;
             }
         }
+        $post_All[$i]['like_id'] = $user_likes[$posts[0][$i]['id']] ?? -1;
     }
 
     $_SESSION['post_All'] = $post_All;
