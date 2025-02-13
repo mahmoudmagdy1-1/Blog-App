@@ -17,34 +17,43 @@ function addPost($newPost)
 /** list posts with it's number of likes and number of comments and user creator */
 function list_Posts()
 {
-    $query = "SELECT posts.*  , users.first_name,users.last_name,users.user_image from posts JOIN users on posts.user_id=users.id";
-    $post_user = select_array($query);
-    if (empty($post_user)) {
-        $post_user = [];
-    }
-    $query = "SELECT posts.id  , count(likes.id) as likes_count from posts JOIN likes on posts.id=likes.post_id GROUP by likes.post_id";
-    $post_likes = select_array($query);
-    if (empty($post_likes)) {
-        $post_likes = [];
-    }
-    $query = "SELECT posts.id  , count(comments.id) as comments_count from posts JOIN comments on posts.id=comments.post_id GROUP by comments.post_id";
-    $post_comments = select_array($query);
-    if (empty($post_comments)) {
-        $post_comments = [];
+    $user_id = $_SESSION['auth']['id'] ?? 1;
+
+    $query = "
+        SELECT 
+            posts.*, 
+            users.first_name, 
+            users.last_name, 
+            users.user_image,
+            likes_count.likes_count AS likes_count,
+            comments_count.comments_count AS comments_count,
+            user_likes.like_id
+        FROM posts
+        JOIN users ON posts.user_id = users.id
+        LEFT JOIN (
+            SELECT post_id, COUNT(id) AS likes_count
+            FROM likes
+            GROUP BY post_id
+        ) AS likes_count ON posts.id = likes_count.post_id
+        LEFT JOIN (
+            SELECT post_id, COUNT(id) AS comments_count
+            FROM comments
+            GROUP BY post_id
+        ) AS comments_count ON posts.id = comments_count.post_id
+        LEFT JOIN (
+            SELECT post_id, id AS like_id
+            FROM likes
+            WHERE user_id = $user_id
+        ) AS user_likes ON posts.id = user_likes.post_id
+    ";
+
+    $posts = select_array($query);
+    if (empty($posts)) {
+        $posts = [];
     }
 
-    $user_id = $_SESSION['auth']['id'];
-    $query = "SELECT id AS like_id, post_id FROM likes WHERE user_id = $user_id";
-    $user_likes = select_array($query);
-    if (empty($user_likes)) {
-        $user_likes = [];
-    }
-
-    $posts = [$post_user, $post_likes, $post_comments, $user_likes];
     return $posts;
 }
-
-
 
 //delete User
 function delete_Post($id)

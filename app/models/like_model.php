@@ -12,6 +12,18 @@ function insertLike($newLike)
 function removeLike($newLike)
 {
     global $table_name;
-    $delete_status =  delete_item($table_name, $newLike);
+    $delete_status =  remove_item($table_name, $newLike);
     return $delete_status;
+}
+
+function checkLike($newLike)
+{
+    global $table_name;
+    $query = "SELECT * FROM $table_name WHERE post_id = " . $newLike['post_id'] . " AND user_id = " . $newLike['user_id'];
+    $result = select_array($query);
+    if (empty($result)) {
+        return false;
+    } else {
+        return true;
+    }
 }

@@ -3,27 +3,12 @@ require_once('../app/models/post_model.php');
 function post_index()
 {
     $posts = list_Posts();
-    $user_likes = array_column($posts[3], 'post_id');
 
-    $post_All = $posts[0];
-    for ($i = 0; $i < count($posts[0]); $i++) {
-
-        for ($j = 0; $j < count($posts[1]); $j++) {
-            if ($posts[0][$i]['id'] == $posts[1][$j]['id']) {
-                $post_All[$i]['likes_count'] = $posts[1][$j]['likes_count'];
-                break;
-            }
-        }
-        for ($j = 0; $j < count($posts[2]); $j++) {
-            if ($posts[0][$i]['id'] == $posts[2][$j]['id']) {
-                $post_All[$i]['comments_count'] = $posts[2][$j]['comments_count'];
-                break;
-            }
-        }
-        $post_All[$i]['like_id'] = $user_likes[$posts[0][$i]['id']] ?? -1;
+    foreach ($posts as &$post) {
+        $post['user_liked'] = isset($post['like_id']);
     }
 
-    $_SESSION['post_All'] = $post_All;
+    $_SESSION['post_All'] = $posts;
     header("location:posts_all");
     die;
 }

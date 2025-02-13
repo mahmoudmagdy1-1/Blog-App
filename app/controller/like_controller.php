@@ -36,8 +36,11 @@ function likeIndex()
             'user_id' => $_SESSION['auth']["id"],
             'post_id' => $_POST['post_id']
         ];
-        if ($_SESSION['post_All']['post_id']['like_id']) {
+
+        if (checkLike($newLike)) {
             deleteLike($newLike);
-        } else  addLike($newLike);
+        } else {
+            addLike($newLike);
+        }
     }
 }
