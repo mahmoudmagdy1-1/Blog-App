@@ -29,6 +29,29 @@
         case 'store-post':
             require '../app/controller/postController.php';
             store_post();
+            break;
+        case 'edit_post':
+            require '../app/controller/postController.php';
+            edit_post();
+            break;
+        case 'update_post':
+            require '../app/pages/post_update.php';
+            break;
+        case 'update-post':
+            require '../app/controller/postController.php';
+            updatePost();
+            break;
+        case 'delete_post':
+            require '../app/controller/postController.php';
+            deletePost();
+            break;
+        case 'show_post':
+            require '../app/controller/postController.php';
+            showPost();
+            break;
+        case 'show_post_data':
+            require '../app/pages/post_show.php';
+            break;
         case 'contact':
             require '../app/pages/contact.php';
             break;
@@ -66,11 +89,34 @@
             require '../app/controller/userController.php';
             update_user_password();
             break;
-
-        default:
-            require_once("../app/controllers/home_controller.php");
-            home_index();
+        case 'like_post':
+            require '../app/controller/like_controller.php';
+            likeIndex();
             break;
+        case 'store_like':
+            require '../app/controller/postController.php';
+            post_index();
+            break;
+        case 'like_comment':
+            require '../app/controller/like_comment_controller.php';
+            likeIndex_comment();
+            break;
+        case 'add_comment':
+            require '../app/controller/comment_controller.php';
+            store_comment();
+            break;
+        case 'delete_comment':
+            require '../app/controller/comment_controller.php';
+            delete_comment();
+            break;
+        case 'edit_comment':
+            require '../app/controller/comment_controller.php';
+            edit_comment();
+            break;
+            // default:
+            //     require_once("../app/controllers/home_controller.php");
+            //     home_index();
+            //     break;
     }
     require '../app/layouts/footer.php';
 

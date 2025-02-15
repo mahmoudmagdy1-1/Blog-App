@@ -1,12 +1,12 @@
 <?php
 require_once('../app/handelers/database_handeler.php');
-
+/*
 $table_name = 'users';
-
+*/
 //add User
 function addUser($newUser)
 {
-    global $table_name;
+    $table_name='users';
     $insert_statues = insert_item($table_name, $newUser);
     return  $insert_statues; //"Account Created Sucessfully"
 }
@@ -14,7 +14,7 @@ function addUser($newUser)
 // list Users
 function listUsers()
 {
-    global $table_name;
+    $table_name='users';
     $Users =  select_all($table_name);
     return $Users;
 }
@@ -22,7 +22,7 @@ function listUsers()
 /** to check if email exist already in users before or not*/
 function notExistEmail($email)
 {
-    global $table_name;
+    $table_name='users';
     $col_name = "email";
     $Users = select_all_column($table_name, $col_name);
     foreach ($Users as $user) {
@@ -38,7 +38,7 @@ function notExistEmail($email)
 /** check if user exist with this email and password or not*/
 function LoginCheck($email, $password)
 {
-    global $table_name;
+    $table_name='users';
     $query = "SELECT * FROM `$table_name` WHERE `email`='$email' and `password` = '$password'";
     $User = select_array($query);
     if (!empty($User)) {
@@ -51,7 +51,7 @@ function LoginCheck($email, $password)
 /** select user using id */
 function get_User($id)
 {
-    global $table_name;
+    $table_name='users';
     $User = select_item($table_name, $id);
     if (!empty($User)) {
         return $User;
@@ -63,7 +63,7 @@ function get_User($id)
 //delete User
 function delete_User($id)
 {
-    global $table_name;
+    $table_name='users';
     $delete_status =  delete_item($table_name, $id);
     return $delete_status;
 }
@@ -71,7 +71,7 @@ function delete_User($id)
 // update user data
 function update_User($id, $data)
 {
-    global $table_name;
+    $table_name='users';
     $update_status =  update_item($table_name, $data, $id);
     return $update_status;
 }
