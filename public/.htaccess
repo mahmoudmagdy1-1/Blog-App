@@ -1,6 +1,6 @@
 RewriteEngine On
 # change the next to your path
-RewriteBase /EraaSoft%20PHP/Practice/Sessions/Session%2014/Blog/Blog-App/public
+RewriteBase /eratasks/Blog/Blog-App/public
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
